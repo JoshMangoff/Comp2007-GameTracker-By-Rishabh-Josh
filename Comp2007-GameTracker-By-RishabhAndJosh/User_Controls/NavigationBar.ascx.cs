@@ -34,16 +34,16 @@ namespace Comp2007_GameTracker_By_RishabhAndJosh.User_Controls
                 case "Home":
                     home.Attributes.Add("class", "active");
                     break;
-                case "games":
+                case "Games":
                     games.Attributes.Add("class", "active");
                     break;
-                case "login":
+                case "Login":
                     login.Attributes.Add("class", "active");
                     break;
-                case "register":
+                case "Register":
                     register.Attributes.Add("class", "active");
                     break;
-                case "contact":
+                case "Contact":
                     contact.Attributes.Add("class", "active");
                     break;
             }

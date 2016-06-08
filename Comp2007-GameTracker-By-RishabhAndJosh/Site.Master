@@ -1,0 +1,35 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Comp2007_GameTracker_By_RishabhAndJosh.Site" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+       <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS Section-->
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="Content/font-awesome.min.css" rel="stylesheet" />
+     <!--CSS Section End-->
+
+</head>
+<body>
+    <form id="form1" runat="server">
+    <%--Added Navigation Bar Referenced from Web.config --%>
+         <NvB:NavigationBar runat="server"></NvB:NavigationBar>
+    <div>
+        <%--Placeholder--%>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+
+     <!-- Javascript-->
+    <script src="scripts/jquery-2.2.3.min.js"></script>
+    <script src="scripts/bootstrap.min.js"></script>
+
+</body>
+</html>
