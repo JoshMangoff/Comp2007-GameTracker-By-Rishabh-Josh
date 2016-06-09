@@ -1,4 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="NavigationBar.ascx.cs" Inherits="Comp2007_GameTracker_By_RishabhAndJosh.User_Controls.NavigationBar" %>
+
+<%--Navigation page setup--%>
 <nav class="navbar navbar-inverse" role="navigation">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -16,7 +18,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
                         <li id="home" runat="server"><a href="Default.aspx"><i class="fa fa-home fa-lg"></i> Home</a></li>
-                        <li id="games" runat="server"><a href="Games.aspx"><i class="fa fa-th fa-lg"></i> Games</a></li>
+                        <li id="games" runat="server"><a href="Games.aspx"><i class="fa fa-gamepad fa-lg"></i> Games</a></li>
                         <li id="login" runat="server"><a href="Login.aspx"><i class="fa fa-gear fa-lg"></i> Login </a></li>
                         <li id="register" runat="server"><a href="Register.aspx"><i class="fa fa-info fa-lg"></i> Register </a></li>
                         <li id="contact" runat="server"><a href="Contact.aspx"><i class="fa fa-phone fa-lg"></i> Contact Us </a></li>

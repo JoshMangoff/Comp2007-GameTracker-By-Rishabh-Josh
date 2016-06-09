@@ -8,6 +8,7 @@ using System.Web.UI.WebControls;
 /**
 * @Description: This file is used to perform site navigation activities
 * @Author:      Rishabh Batra & Josh Mangoff
+* @Student Numbers: Rishabh(200301786) & Josh(200284512)
 * @Date :       June 7th, 2016
 * @Version:     0.1
 */
