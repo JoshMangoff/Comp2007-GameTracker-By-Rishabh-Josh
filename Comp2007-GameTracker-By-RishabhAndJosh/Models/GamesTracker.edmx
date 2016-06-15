@@ -1,0 +1,287 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="GamesTrackerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Games">
+          <Key>
+            <PropertyRef Name="GamesID" />
+          </Key>
+          <Property Name="GamesID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GameName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="GameDescription" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GamesPlayed">
+          <Key>
+            <PropertyRef Name="GamesPlayedID" />
+          </Key>
+          <Property Name="GamesPlayedID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DatePlayed" Type="datetime" Nullable="false" />
+          <Property Name="Game" Type="int" Nullable="false" />
+          <Property Name="TeamA" Type="int" Nullable="false" />
+          <Property Name="TeamB" Type="int" Nullable="false" />
+          <Property Name="TotalPointsScored" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="NumberOfSpectators" Type="int" Nullable="false" />
+          <Property Name="WinningTeam" Type="int" Nullable="false" />
+          <Property Name="TeamA_Scores" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="TeamB_Scores" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="TotalPointsAllowed" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Teams">
+          <Key>
+            <PropertyRef Name="TeamsID" />
+          </Key>
+          <Property Name="TeamsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TeamName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="TeamDescription" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_GamesPlayed_Game">
+          <End Role="Games" Type="Self.Games" Multiplicity="1" />
+          <End Role="GamesPlayed" Type="Self.GamesPlayed" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Games">
+              <PropertyRef Name="GamesID" />
+            </Principal>
+            <Dependent Role="GamesPlayed">
+              <PropertyRef Name="Game" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GamesPlayed_TeamA">
+          <End Role="Teams" Type="Self.Teams" Multiplicity="1" />
+          <End Role="GamesPlayed" Type="Self.GamesPlayed" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teams">
+              <PropertyRef Name="TeamsID" />
+            </Principal>
+            <Dependent Role="GamesPlayed">
+              <PropertyRef Name="TeamA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GamesPlayed_TeamB">
+          <End Role="Teams" Type="Self.Teams" Multiplicity="1" />
+          <End Role="GamesPlayed" Type="Self.GamesPlayed" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teams">
+              <PropertyRef Name="TeamsID" />
+            </Principal>
+            <Dependent Role="GamesPlayed">
+              <PropertyRef Name="TeamB" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GamesPlayed_WinningTeam">
+          <End Role="Teams" Type="Self.Teams" Multiplicity="1" />
+          <End Role="GamesPlayed" Type="Self.GamesPlayed" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teams">
+              <PropertyRef Name="TeamsID" />
+            </Principal>
+            <Dependent Role="GamesPlayed">
+              <PropertyRef Name="WinningTeam" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GamesTrackerModelStoreContainer">
+          <EntitySet Name="Games" EntityType="Self.Games" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GamesPlayed" EntityType="Self.GamesPlayed" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Teams" EntityType="Self.Teams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_GamesPlayed_Game" Association="Self.FK_GamesPlayed_Game">
+            <End Role="Games" EntitySet="Games" />
+            <End Role="GamesPlayed" EntitySet="GamesPlayed" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GamesPlayed_TeamA" Association="Self.FK_GamesPlayed_TeamA">
+            <End Role="Teams" EntitySet="Teams" />
+            <End Role="GamesPlayed" EntitySet="GamesPlayed" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GamesPlayed_TeamB" Association="Self.FK_GamesPlayed_TeamB">
+            <End Role="Teams" EntitySet="Teams" />
+            <End Role="GamesPlayed" EntitySet="GamesPlayed" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GamesPlayed_WinningTeam" Association="Self.FK_GamesPlayed_WinningTeam">
+            <End Role="Teams" EntitySet="Teams" />
+            <End Role="GamesPlayed" EntitySet="GamesPlayed" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GamesTrackerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Game">
+          <Key>
+            <PropertyRef Name="GamesID" />
+          </Key>
+          <Property Name="GamesID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GameName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GameDescription" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="GamesPlayeds" Relationship="Self.FK_GamesPlayed_Game" FromRole="Games" ToRole="GamesPlayed" />
+        </EntityType>
+        <EntityType Name="GamesPlayed">
+          <Key>
+            <PropertyRef Name="GamesPlayedID" />
+          </Key>
+          <Property Name="GamesPlayedID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DatePlayed" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Game" Type="Int32" Nullable="false" />
+          <Property Name="TeamA" Type="Int32" Nullable="false" />
+          <Property Name="TeamB" Type="Int32" Nullable="false" />
+          <Property Name="TotalPointsScored" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="NumberOfSpectators" Type="Int32" Nullable="false" />
+          <Property Name="WinningTeam" Type="Int32" Nullable="false" />
+          <Property Name="TeamA_Scores" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="TeamB_Scores" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="TotalPointsAllowed" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <NavigationProperty Name="Game1" Relationship="Self.FK_GamesPlayed_Game" FromRole="GamesPlayed" ToRole="Games" />
+          <NavigationProperty Name="Team" Relationship="Self.FK_GamesPlayed_TeamA" FromRole="GamesPlayed" ToRole="Teams" />
+          <NavigationProperty Name="Team1" Relationship="Self.FK_GamesPlayed_TeamB" FromRole="GamesPlayed" ToRole="Teams" />
+          <NavigationProperty Name="Team2" Relationship="Self.FK_GamesPlayed_WinningTeam" FromRole="GamesPlayed" ToRole="Teams" />
+        </EntityType>
+        <EntityType Name="Team">
+          <Key>
+            <PropertyRef Name="TeamsID" />
+          </Key>
+          <Property Name="TeamsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TeamName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TeamDescription" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="GamesPlayeds" Relationship="Self.FK_GamesPlayed_TeamA" FromRole="Teams" ToRole="GamesPlayed" />
+          <NavigationProperty Name="GamesPlayeds1" Relationship="Self.FK_GamesPlayed_TeamB" FromRole="Teams" ToRole="GamesPlayed" />
+          <NavigationProperty Name="GamesPlayeds2" Relationship="Self.FK_GamesPlayed_WinningTeam" FromRole="Teams" ToRole="GamesPlayed" />
+        </EntityType>
+        <Association Name="FK_GamesPlayed_Game">
+          <End Role="Games" Type="Self.Game" Multiplicity="1" />
+          <End Role="GamesPlayed" Type="Self.GamesPlayed" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Games">
+              <PropertyRef Name="GamesID" />
+            </Principal>
+            <Dependent Role="GamesPlayed">
+              <PropertyRef Name="Game" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GamesPlayed_TeamA">
+          <End Role="Teams" Type="Self.Team" Multiplicity="1" />
+          <End Role="GamesPlayed" Type="Self.GamesPlayed" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teams">
+              <PropertyRef Name="TeamsID" />
+            </Principal>
+            <Dependent Role="GamesPlayed">
+              <PropertyRef Name="TeamA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GamesPlayed_TeamB">
+          <End Role="Teams" Type="Self.Team" Multiplicity="1" />
+          <End Role="GamesPlayed" Type="Self.GamesPlayed" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teams">
+              <PropertyRef Name="TeamsID" />
+            </Principal>
+            <Dependent Role="GamesPlayed">
+              <PropertyRef Name="TeamB" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GamesPlayed_WinningTeam">
+          <End Role="Teams" Type="Self.Team" Multiplicity="1" />
+          <End Role="GamesPlayed" Type="Self.GamesPlayed" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teams">
+              <PropertyRef Name="TeamsID" />
+            </Principal>
+            <Dependent Role="GamesPlayed">
+              <PropertyRef Name="WinningTeam" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DefaultConnection" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Games" EntityType="Self.Game" />
+          <EntitySet Name="GamesPlayeds" EntityType="Self.GamesPlayed" />
+          <EntitySet Name="Teams" EntityType="Self.Team" />
+          <AssociationSet Name="FK_GamesPlayed_Game" Association="Self.FK_GamesPlayed_Game">
+            <End Role="Games" EntitySet="Games" />
+            <End Role="GamesPlayed" EntitySet="GamesPlayeds" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GamesPlayed_TeamA" Association="Self.FK_GamesPlayed_TeamA">
+            <End Role="Teams" EntitySet="Teams" />
+            <End Role="GamesPlayed" EntitySet="GamesPlayeds" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GamesPlayed_TeamB" Association="Self.FK_GamesPlayed_TeamB">
+            <End Role="Teams" EntitySet="Teams" />
+            <End Role="GamesPlayed" EntitySet="GamesPlayeds" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GamesPlayed_WinningTeam" Association="Self.FK_GamesPlayed_WinningTeam">
+            <End Role="Teams" EntitySet="Teams" />
+            <End Role="GamesPlayed" EntitySet="GamesPlayeds" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GamesTrackerModelStoreContainer" CdmEntityContainer="DefaultConnection">
+          <EntitySetMapping Name="Games">
+            <EntityTypeMapping TypeName="GamesTrackerModel.Game">
+              <MappingFragment StoreEntitySet="Games">
+                <ScalarProperty Name="GamesID" ColumnName="GamesID" />
+                <ScalarProperty Name="GameName" ColumnName="GameName" />
+                <ScalarProperty Name="GameDescription" ColumnName="GameDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GamesPlayeds">
+            <EntityTypeMapping TypeName="GamesTrackerModel.GamesPlayed">
+              <MappingFragment StoreEntitySet="GamesPlayed">
+                <ScalarProperty Name="GamesPlayedID" ColumnName="GamesPlayedID" />
+                <ScalarProperty Name="DatePlayed" ColumnName="DatePlayed" />
+                <ScalarProperty Name="Game" ColumnName="Game" />
+                <ScalarProperty Name="TeamA" ColumnName="TeamA" />
+                <ScalarProperty Name="TeamB" ColumnName="TeamB" />
+                <ScalarProperty Name="TotalPointsScored" ColumnName="TotalPointsScored" />
+                <ScalarProperty Name="NumberOfSpectators" ColumnName="NumberOfSpectators" />
+                <ScalarProperty Name="WinningTeam" ColumnName="WinningTeam" />
+                <ScalarProperty Name="TeamA_Scores" ColumnName="TeamA_Scores" />
+                <ScalarProperty Name="TeamB_Scores" ColumnName="TeamB_Scores" />
+                <ScalarProperty Name="TotalPointsAllowed" ColumnName="TotalPointsAllowed" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Teams">
+            <EntityTypeMapping TypeName="GamesTrackerModel.Team">
+              <MappingFragment StoreEntitySet="Teams">
+                <ScalarProperty Name="TeamsID" ColumnName="TeamsID" />
+                <ScalarProperty Name="TeamName" ColumnName="TeamName" />
+                <ScalarProperty Name="TeamDescription" ColumnName="TeamDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
