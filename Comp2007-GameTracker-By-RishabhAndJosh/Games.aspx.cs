@@ -35,7 +35,7 @@ namespace Comp2007_GameTracker_By_RishabhAndJosh
 
         protected void SelectWeek_SelectionChanged(object sender, EventArgs e)
         {
-            Label1.Text = SelectWeek.SelectedDates[0] + " - " + SelectWeek.SelectedDates[SelectWeek.SelectedDates.Count-1].ToShortDateString();
+            DateSelectedFromCalendar.Text = SelectWeek.SelectedDates[0].ToShortDateString() + " to " + SelectWeek.SelectedDates[SelectWeek.SelectedDates.Count-1].ToShortDateString();
             // connect to the EF DB
             using (DefaultConnection db = new DefaultConnection())
             {

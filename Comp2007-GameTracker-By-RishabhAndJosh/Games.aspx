@@ -4,12 +4,13 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container">
         <div class="row">
-            <div class="col-md-offset-3 col-md-8">
-                <h1>Games Tracker</h1>
+            <div class="col-md-offset-2 col-md-8">
+                <h1 style="text-align:center;">Games Tracker</h1>
                 <div class="grid">
                     <div class="form-group row">
-                        <label class="control-label floatL margin10" for="SelectWeek">Select Week</label>
-                        <asp:Calendar ID="SelectWeek" CssClass="floatL weekCalendar" SelectionMode="DayWeek" runat="server" BackColor="#FFFFCC" BorderColor="#FFCC66" BorderWidth="1px" DayNameFormat="Shortest" Font-Names="Verdana" Font-Size="8pt" ForeColor="#663399" Height="200px" ShowGridLines="True" Width="220px" OnDayRender="SelectWeek_DayRender" OnSelectionChanged="SelectWeek_SelectionChanged">
+                        <div class="col-md-4 center-block">
+                        <label class="control-label  margin10" for="SelectWeek">Select Week</label>
+                        <asp:Calendar ID="SelectWeek" CssClass=" weekCalendar" SelectionMode="DayWeek" runat="server" BackColor="#FFFFCC" BorderColor="#FFCC66" BorderWidth="1px" DayNameFormat="Shortest" Font-Names="Verdana" Font-Size="8pt" ForeColor="#663399" Height="200px" ShowGridLines="True" Width="220px" OnDayRender="SelectWeek_DayRender" OnSelectionChanged="SelectWeek_SelectionChanged">
                             <DayHeaderStyle BackColor="#FFCC66" Font-Bold="True" Height="1px" />
                             <NextPrevStyle Font-Size="9pt" ForeColor="#FFFFCC" />
                             <OtherMonthDayStyle ForeColor="#CC9966" />
@@ -18,7 +19,8 @@
                             <TitleStyle BackColor="#990000" Font-Bold="True" Font-Size="9pt" ForeColor="#FFFFCC" />
                             <TodayDayStyle BackColor="#FFCC66" ForeColor="White" />
                         </asp:Calendar>
-                        <asp:Label CssClass="margin10" ID="Label1" runat="server" Text="Label"></asp:Label>
+                           <asp:Label CssClass="margin10 col-centered" ID="DateSelectedFromCalendar" runat="server" Text=""></asp:Label>
+                       </div>
                     </div>
                     <div class="col-lg-2">
                         <div class="form-group row  ">
