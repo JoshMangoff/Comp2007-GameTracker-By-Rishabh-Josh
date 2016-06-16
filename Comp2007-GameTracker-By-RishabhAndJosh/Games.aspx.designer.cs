@@ -40,6 +40,15 @@ namespace Comp2007_GameTracker_By_RishabhAndJosh {
         protected global::System.Web.UI.WebControls.TextBox GameNameTextBox1;
         
         /// <summary>
+        /// GameDescriptionTextBox1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox GameDescriptionTextBox1;
+        
+        /// <summary>
         /// TeamATextBox1 control.
         /// </summary>
         /// <remarks>
@@ -119,6 +128,15 @@ namespace Comp2007_GameTracker_By_RishabhAndJosh {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox GameNameTextBox2;
+        
+        /// <summary>
+        /// GameDescriptionTextBox2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox GameDescriptionTextBox2;
         
         /// <summary>
         /// TeamATextBox2 control.
@@ -202,6 +220,15 @@ namespace Comp2007_GameTracker_By_RishabhAndJosh {
         protected global::System.Web.UI.WebControls.TextBox GameNameTextBox3;
         
         /// <summary>
+        /// GameDescriptionTextBox3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox GameDescriptionTextBox3;
+        
+        /// <summary>
         /// TeamATextBox3 control.
         /// </summary>
         /// <remarks>
@@ -281,6 +308,15 @@ namespace Comp2007_GameTracker_By_RishabhAndJosh {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox GameNameTextBox4;
+        
+        /// <summary>
+        /// GameDescriptionTextBox4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox GameDescriptionTextBox4;
         
         /// <summary>
         /// TeamATextBox4 control.

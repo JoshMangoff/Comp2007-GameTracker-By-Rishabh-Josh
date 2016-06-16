@@ -9,8 +9,8 @@ using System.Web.UI.WebControls;
 * @Description: This file is used to track Games statistics
 * @Author:          Rishabh Batra & Josh Mangoff
 * @Student Numbers: Rishabh(200301786) & Josh(200284512)
-* @Date :           June 7th, 2016
-* @Version:         0.1
+* @Date :           June 15th, 2016
+* @Version:         0.2
 */
 
 
@@ -30,23 +30,28 @@ namespace Comp2007_GameTracker_By_RishabhAndJosh
 
         protected void SelectWeek_DayRender(object sender, DayRenderEventArgs e)
         {
+            //Disabling date selection on Calendar, only week selection is allowed.
             e.Day.IsSelectable = false;
         }
 
         protected void SelectWeek_SelectionChanged(object sender, EventArgs e)
         {
             DateSelectedFromCalendar.Text = SelectWeek.SelectedDates[0].ToShortDateString() + " to " + SelectWeek.SelectedDates[SelectWeek.SelectedDates.Count-1].ToShortDateString();
+            
+            
             // connect to the EF DB
             using (DefaultConnection db = new DefaultConnection())
             {
                 DateTime selectedDate = SelectWeek.SelectedDates[0];
-                // populate a student object instance with the StudentID from the URL Parameter
+                // populate a gamesPlayed object instance with the datePlayed from date selected in Calendar
                 GamesPlayed gamesPlayed = (from gPlayed in db.GamesPlayeds
                                            where gPlayed.DatePlayed== selectedDate
                                            select gPlayed).FirstOrDefault();
                 if (gamesPlayed != null)
                 {
+                    //fetching data into controls
                     GameNameTextBox1.Text = (from games in db.Games where games.GamesID == gamesPlayed.Game select games.GameName).SingleOrDefault();
+                    GameDescriptionTextBox1.Text = (from game in db.Games where game.GamesID == gamesPlayed.Game select game.GameDescription).SingleOrDefault();
                     TeamATextBox1.Text = (from team in db.Teams where team.TeamsID == gamesPlayed.TeamA select team.TeamName).SingleOrDefault();
                     TeamBTextBox1.Text = (from team in db.Teams where team.TeamsID == gamesPlayed.TeamB select team.TeamName).SingleOrDefault();
                     TotalPointsTextBox1.Text = gamesPlayed.TotalPointsScored.ToString();
