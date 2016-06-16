@@ -64,6 +64,7 @@ namespace Comp2007_GameTracker_By_RishabhAndJosh
                 }
                 else
                 {
+                    //Clear form
                     GameNameTextBox1.Text = "";
                     GameDescriptionTextBox1.Text = "";
                     TeamATextBox1.Text = "";
