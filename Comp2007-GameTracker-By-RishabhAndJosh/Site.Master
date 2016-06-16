@@ -9,9 +9,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSS Section-->
+    <link href="Content/App.css" rel="stylesheet" />
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
     <link href="Content/bootstrap-theme.min.css" rel="stylesheet" />
     <link href="Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="Content/themes/base/all.css" rel="stylesheet" />
+
      <!--CSS Section End-->
 
 </head>
@@ -28,8 +31,10 @@
     </form>
 
      <!-- Javascript-->
+    
     <script src="scripts/jquery-2.2.3.min.js"></script>
     <script src="scripts/bootstrap.min.js"></script>
-
+    <script src="Scripts/jquery-ui-1.11.4.min.js"></script>
+    <script src="Scripts/App.js"></script>
 </body>
 </html>
