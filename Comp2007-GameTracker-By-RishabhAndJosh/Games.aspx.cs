@@ -62,6 +62,20 @@ namespace Comp2007_GameTracker_By_RishabhAndJosh
                     TeamBScoresTextBox1.Text = gamesPlayed.TeamB_Scores.ToString();
                     TotalPointsAllowedTextBox1.Text = gamesPlayed.TotalPointsAllowed.ToString();
                 }
+                else
+                {
+                    GameNameTextBox1.Text = "";
+                    GameDescriptionTextBox1.Text = "";
+                    TeamATextBox1.Text = "";
+                    TeamBTextBox1.Text = "";
+                    TotalPointsTextBox1.Text = "";
+                    TotalPointsAllowedTextBox1.Text = ""; 
+                    NoOfSpectatorsTextBox1.Text = ""; 
+                    WinningTeamTextBox1.Text = ""; 
+                    TeamAScoresTextBox1.Text = "";
+                    TeamBScoresTextBox1.Text = ""; 
+                    TotalPointsAllowedTextBox1.Text = ""; 
+                }
             }
         }
     }
