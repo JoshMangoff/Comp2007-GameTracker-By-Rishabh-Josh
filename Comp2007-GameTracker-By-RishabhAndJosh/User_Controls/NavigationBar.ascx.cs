@@ -20,7 +20,22 @@ namespace Comp2007_GameTracker_By_RishabhAndJosh.User_Controls
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            //navbar availibility
+            if(!IsPostBack)
+            {
+                if(HttpContext.Current.User.Identity.IsAuthenticated)
+                {
+                    //show logout
+                    PrivatePlaceHolder.Visible = true;
+                    PublicPlaceHolder.Visible = false;
+                }
+                else
+                {
+                    //show login and register
+                    PrivatePlaceHolder.Visible = false;
+                    PublicPlaceHolder.Visible = true;
+                }
+            }
         }
         /**
         * This method adds a css class of "active" to the 
