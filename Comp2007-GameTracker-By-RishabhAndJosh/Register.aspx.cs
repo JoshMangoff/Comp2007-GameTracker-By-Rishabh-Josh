@@ -21,7 +21,22 @@ namespace Comp2007_GameTracker_By_RishabhAndJosh
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            //checking for title
+            if(!IsPostBack)
+            {
+                if(HttpContext.Current.User.Identity.IsAuthenticated)
+                {
+                    //show logout
+                    PrivateTitlePlaceHolder.Visible = true;
+                    PublicTitlePlaceHolder.Visible = false;
+                }
+                else
+                {
+                    //show login and register
+                    PrivateTitlePlaceHolder.Visible = false;
+                    PublicTitlePlaceHolder.Visible = true;
+                }
+            }
         }
     }
 }
