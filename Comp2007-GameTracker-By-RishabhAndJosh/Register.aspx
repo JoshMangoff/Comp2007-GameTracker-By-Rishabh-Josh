@@ -5,8 +5,12 @@
     <div class="container">
         <div class="row">
             <div class="col-md-offset-3 col-md-6">
-
-                <h2>Create an Account!</h2>
+                <asp:PlaceHolder ID="PublicTitlePlaceHolder" runat="server">
+                    <h2>Create an Account!</h2>
+                </asp:PlaceHolder>
+                <asp:PlaceHolder ID="PrivateTitlePlaceHolder" runat="server">
+                    <h2>Edit Account</h2>
+                </asp:PlaceHolder>
                 <div class="form-group">
                     <label class="control-label" for="UsernameTextBox">Username</label>
                     <asp:TextBox type="text" runat="server" class="form-control" ID="UsernameTextBox" placeholder="Username" required="true"></asp:TextBox>
