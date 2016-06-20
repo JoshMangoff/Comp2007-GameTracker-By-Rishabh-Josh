@@ -26,7 +26,7 @@
                         </asp:PlaceHolder>
                         
                         <asp:PlaceHolder ID="PrivatePlaceHolder" runat="server">
-                          <li id="editAccount" runat="server"><a href="Login.aspx"><i class="fa fa-pencil-square-o fa-lg"></i> Edit Account </a></li>
+                          <li id="editAccount" runat="server"><a href="Register.aspx"><i class="fa fa-pencil-square-o fa-lg"></i> Edit Account </a></li>
                           <li id="logout" runat="server"><a href="Logout.aspx"><i class="fa fa-sign-out fa-lg"></i> Logout </a></li>
                         </asp:PlaceHolder>
                         
